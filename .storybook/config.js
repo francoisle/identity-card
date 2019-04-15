@@ -2,6 +2,7 @@ import Vue from "vue";
 import { configure } from "@storybook/vue";
 
 import IdentityCard from "../src/components/IdentityCard.vue";
+
 Vue.component("identity-card", IdentityCard);
 
 // automatically import all files ending in *.stories.js
