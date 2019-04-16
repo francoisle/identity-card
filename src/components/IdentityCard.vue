@@ -57,12 +57,12 @@ export default {
   props: {
     canEdit: {
       type: Boolean,
-      required: true,
+      required: false,
       default: true
     },
     extended: {
       type: Boolean,
-      required: true,
+      required: false,
       default: true
     }
   },
