@@ -11,22 +11,16 @@ storiesOf("IdentityCard", module)
   })
   .add("in read-only mode", () => {
     return {
-      props: {
-        canEdit: false
-      },
       template: `
-      <identity-card :canEdit="canEdit"
+      <identity-card :canEdit="false"
       />
     `
     };
   })
   .add("in reduced mode", () => {
     return {
-      props: {
-        extended: false
-      },
       template: `
-      <identity-card :extended="extended"
+      <identity-card :extended="false"
       />
     `
     };

@@ -3,7 +3,7 @@
     <div class="container__title">
       <h1>Fiche d'information</h1>
       <div class="container__title__button">
-        <button>Mode Lecture Seule</button>
+        <button>{{ canEdit ? "Mode Lecture Seule" : "Modifier" }}</button>
       </div>
     </div>
     <div class="container__body">
@@ -11,6 +11,8 @@
         <div class="card-input">
           <label class="card-label" for="first-name">Prénom</label>
           <input
+            :class="{ 'read-only': !canEdit }"
+            :readonly="!canEdit"
             id="first-name"
             maxlength="20"
             type="text"
@@ -19,19 +21,30 @@
         </div>
         <div class="card-input">
           <label class="card-label" for="last-name">Nom de famille:</label>
-          <input id="last-name" maxlength="20" type="text" v-model="lastName" />
+          <input
+            :class="{ 'read-only': !canEdit }"
+            :readonly="!canEdit"
+            id="last-name"
+            maxlength="20"
+            type="text"
+            v-model="lastName"
+          />
         </div>
         <button class="container__body__top-part__button">
-          Montrer moins de détails
+          {{
+            extended ? "Montrer moins de details" : "Montrer plus de détails"
+          }}
         </button>
       </div>
 
-      <div class="container__body__bottom-part">
+      <div class="container__body__bottom-part" v-if="extended">
         <div class="card-input">
           <label class="card-label" for="favorite-color"
             >Couleur préférée:</label
           >
           <input
+            :class="{ 'read-only': !canEdit }"
+            :readonly="!canEdit"
             id="favorite-color"
             maxlength="20"
             type="text"
@@ -41,6 +54,8 @@
         <div class="card-input">
           <label class="card-label" for="favorite-movie">Film préféré:</label>
           <input
+            :class="{ 'read-only': !canEdit }"
+            :readonly="!canEdit"
             id="favorite-movie"
             maxlength="20"
             type="text"
@@ -126,5 +141,9 @@ export default {
 .card-label {
   display: inline-block;
   min-width: 150px;
+}
+
+.read-only {
+  background-color: lightgrey;
 }
 </style>
